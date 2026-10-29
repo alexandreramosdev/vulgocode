@@ -1,0 +1,16 @@
+# Dependências
+node_modules/
+
+# Build
+dist/
+.astro/
+
+# Ambiente — nunca versionar segredos
+.env
+.env.*
+!.env.example
+
+# Sistema e logs
+.DS_Store
+*.log
+npm-debug.log*

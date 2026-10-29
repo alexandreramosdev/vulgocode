@@ -1,0 +1,90 @@
+---
+import { site, navItems } from '../config/site';
+
+const year = new Date().getFullYear();
+
+// Quando a página /privacidade for criada, adicione o link em footer-bottom.
+---
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <p class="logo">Vulgo<span class="logo-code">Code</span></p>
+      <p class="footer-tagline">{site.tagline}</p>
+    </div>
+
+    <nav class="footer-nav" aria-label="Links do rodapé">
+      <ul>
+        {
+          navItems.map((item) => (
+            <li>
+              <a href={item.href}>{item.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+
+  <div class="container footer-bottom">
+    <p>© {year} {site.name}. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--color-border);
+    background: var(--color-bg-soft);
+    padding-top: var(--space-7);
+  }
+
+  .footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-6);
+    padding-bottom: var(--space-6);
+  }
+
+  .logo {
+    font-size: var(--text-lg);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .logo-code {
+    font-family: var(--font-mono);
+    color: var(--color-accent-soft);
+  }
+
+  .footer-tagline {
+    margin-top: var(--space-2);
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+    max-width: 24rem;
+  }
+
+  .footer-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    list-style: none;
+  }
+
+  .footer-nav a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-size: var(--text-sm);
+  }
+
+  .footer-nav a:hover {
+    color: var(--color-text);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid var(--color-border);
+    padding-block: var(--space-4);
+    color: var(--color-text-faint);
+    font-size: var(--text-xs);
+  }
+</style>

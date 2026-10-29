@@ -1,0 +1,159 @@
+---
+import { navItems } from '../config/site';
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="/">Vulgo<span class="logo-code">Code</span></a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="menu-principal"
+    >
+      Menu
+    </button>
+
+    <nav id="menu-principal" class="site-nav" aria-label="Navegação principal">
+      <ul>
+        {
+          navItems.map((item) => (
+            <li>
+              <a href={item.href}>{item.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+  const nav = document.getElementById('menu-principal');
+
+  if (toggle && nav) {
+    const setOpen = (open: boolean) => {
+      nav.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+    };
+
+    toggle.addEventListener('click', () => {
+      setOpen(!nav.classList.contains('is-open'));
+    });
+
+    nav.addEventListener('click', (event) => {
+      if ((event.target as HTMLElement).closest('a')) setOpen(false);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+  }
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--color-header-bg);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .header-inner {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    min-height: 4rem;
+  }
+
+  .logo {
+    font-size: var(--text-xl);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .logo-code {
+    font-family: var(--font-mono);
+    color: var(--color-accent-soft);
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  .site-nav ul {
+    display: flex;
+    align-items: center;
+    gap: var(--space-5);
+    list-style: none;
+  }
+
+  .site-nav a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-size: var(--text-sm);
+  }
+
+  .site-nav a:hover {
+    color: var(--color-text);
+  }
+
+  /* Menu mobile: recolhido apenas quando há JavaScript; sem JS a navegação
+     permanece visível e utilizável. */
+  @media (max-width: 767px) {
+    .js .menu-toggle {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.45rem 0.9rem;
+      background: none;
+      border: 1px solid var(--color-border-strong);
+      border-radius: var(--radius-md);
+      color: var(--color-text);
+      font: inherit;
+      font-size: var(--text-sm);
+      cursor: pointer;
+    }
+
+    .js .menu-toggle:hover {
+      border-color: var(--color-accent);
+    }
+
+    .js .site-nav {
+      display: none;
+      position: absolute;
+      inset-inline: 0;
+      top: 100%;
+      background: var(--color-bg-soft);
+      border-bottom: 1px solid var(--color-border);
+      padding: var(--space-4) var(--space-5) var(--space-5);
+    }
+
+    .js .site-nav.is-open {
+      display: block;
+    }
+
+    .js .site-nav ul {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-2);
+    }
+
+    .js .site-nav a {
+      display: block;
+      padding: var(--space-1) 0;
+      font-size: var(--text-base);
+    }
+  }
+</style>

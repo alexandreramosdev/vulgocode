@@ -1,0 +1,75 @@
+---
+import { site, hasContact } from '../config/site';
+
+// Componente renderizado apenas quando há ao menos um canal configurado
+// (ver `index.astro`). A guarda abaixo protege contra uso indevido.
+const { email, github, linkedin } = site.contact;
+
+const budgetMailto = email
+  ? `mailto:${email}?subject=${encodeURIComponent('Orçamento — VulgoCode')}&body=${encodeURIComponent(
+      'Olá! Gostaria de conversar sobre um projeto.\n\nO que preciso:\n\nPrazo desejado:\n\nFaixa de investimento:',
+    )}`
+  : null;
+---
+
+{
+  hasContact && (
+    <section id="contato" class="section" aria-labelledby="contato-title">
+      <div class="container container--narrow">
+        <p class="section-eyebrow">
+          <span aria-hidden="true">//</span> contato
+        </p>
+        <h2 id="contato-title" class="section-title">
+          Vamos conversar sobre o seu projeto
+        </h2>
+        <p class="section-lead">
+          Conte o que você precisa e receba um retorno com os próximos passos.
+        </p>
+
+        <ul class="contact-list">
+          {email && (
+            <li>
+              <a href={`mailto:${email}`}>{email}</a>
+            </li>
+          )}
+          {github && (
+            <li>
+              <a href={github} target="_blank" rel="noopener noreferrer">
+                GitHub
+                <span class="visually-hidden"> (abre em nova aba)</span>
+              </a>
+            </li>
+          )}
+          {linkedin && (
+            <li>
+              <a href={linkedin} target="_blank" rel="noopener noreferrer">
+                LinkedIn
+                <span class="visually-hidden"> (abre em nova aba)</span>
+              </a>
+            </li>
+          )}
+        </ul>
+
+        {budgetMailto && (
+          <a class="btn btn-primary" href={budgetMailto}>
+            Solicitar orçamento
+          </a>
+        )}
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .contact-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-5);
+    list-style: none;
+    margin-block: var(--space-5);
+  }
+
+  .contact-list a {
+    font-size: var(--text-lg);
+  }
+</style>

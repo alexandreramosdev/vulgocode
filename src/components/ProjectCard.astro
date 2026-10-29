@@ -1,0 +1,78 @@
+---
+import { statusLabels, type Project } from '../data/projects';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<article class="card project-card">
+  <div class="project-head">
+    <h3 class="project-name">{project.name}</h3>
+    <span class={`badge badge--${project.status}`}>
+      {statusLabels[project.status]}
+    </span>
+  </div>
+
+  <p class="project-description">{project.description}</p>
+
+  <ul class="project-tech" aria-label="Tecnologias utilizadas">
+    {project.tech.map((tech) => <li class="tag">{tech}</li>)}
+  </ul>
+
+  {
+    (project.demoUrl ?? project.repoUrl) && (
+      <div class="project-links">
+        {project.demoUrl && (
+          <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
+            Ver demonstração
+            <span class="visually-hidden"> (abre em nova aba)</span>
+          </a>
+        )}
+        {project.repoUrl && (
+          <a href={project.repoUrl} target="_blank" rel="noopener noreferrer">
+            Repositório
+            <span class="visually-hidden"> (abre em nova aba)</span>
+          </a>
+        )}
+      </div>
+    )
+  }
+</article>
+
+<style>
+  .project-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-2);
+  }
+
+  .project-name {
+    font-size: var(--text-lg);
+    line-height: 1.3;
+  }
+
+  .project-description {
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+    flex-grow: 1;
+  }
+
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    list-style: none;
+  }
+
+  .project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    font-size: var(--text-sm);
+  }
+</style>

@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import ProjectsSection from '../components/ProjectsSection.astro';
+import ServicesSection from '../components/ServicesSection.astro';
+import About from '../components/About.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+import { hasContact } from '../config/site';
+
+const title = 'VulgoCode — Ideias transformadas em soluções digitais';
+const description =
+  'Desenvolvimento de aplicações web, sites e ferramentas sob medida para resolver problemas reais. Conheça os projetos e serviços da VulgoCode.';
+---
+
+<BaseLayout title={title} description={description}>
+  <Header />
+  <main id="conteudo">
+    <Hero />
+    <ProjectsSection />
+    <ServicesSection />
+    <About />
+    {hasContact && <Contact />}
+  </main>
+  <Footer />
+</BaseLayout>

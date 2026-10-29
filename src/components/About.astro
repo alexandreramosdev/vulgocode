@@ -1,0 +1,56 @@
+---
+import { site } from '../config/site';
+
+// Apresentação pessoal: preencha `owner.name` e `owner.bio` em
+// src/config/site.ts para que o bloco abaixo apareça automaticamente.
+const { owner } = site;
+---
+
+<section id="sobre" class="section" aria-labelledby="sobre-title">
+  <div class="container container--narrow">
+    <p class="section-eyebrow"><span aria-hidden="true">//</span> sobre</p>
+    <h2 id="sobre-title" class="section-title">
+      Uma marca independente, focada em resolver problemas
+    </h2>
+
+    <div class="about-text">
+      <p>
+        A VulgoCode é uma iniciativa independente de desenvolvimento de
+        software. A proposta é simples: entender o problema antes de escrever
+        código, escolher a tecnologia adequada ao tamanho da solução e entregar
+        software claro, leve e fácil de manter.
+      </p>
+      <p>
+        Cada projeto começa pequeno e evolui conforme a necessidade real — sem
+        complexidade desnecessária, sem dependências supérfluas e com
+        comunicação direta em cada etapa.
+      </p>
+
+      {
+        owner.bio && (
+          <p class="about-bio">
+            {owner.name && <strong>{owner.name}. </strong>}
+            {owner.bio}
+          </p>
+        )
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    color: var(--color-text-muted);
+  }
+
+  .about-bio {
+    color: var(--color-text);
+  }
+
+  .about-bio strong {
+    color: var(--color-accent-soft);
+  }
+</style>

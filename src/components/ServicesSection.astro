@@ -1,0 +1,19 @@
+---
+import { enabledServices } from '../data/services';
+import ServiceCard from './ServiceCard.astro';
+---
+
+<section id="servicos" class="section" aria-labelledby="servicos-title">
+  <div class="container">
+    <p class="section-eyebrow"><span aria-hidden="true">//</span> serviços</p>
+    <h2 id="servicos-title" class="section-title">Como posso ajudar</h2>
+    <p class="section-lead">
+      Frentes de atuação em desenvolvimento web. Cada projeto é avaliado
+      individualmente, com escopo e prazo definidos antes de começar.
+    </p>
+
+    <div class="grid-cards">
+      {enabledServices.map((service) => <ServiceCard service={service} />)}
+    </div>
+  </div>
+</section>
