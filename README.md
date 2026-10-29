@@ -50,18 +50,17 @@ Para adicionar uma página nova (ex.: `/servicos`), crie um arquivo em `src/page
 
 Repositório: **`alexandreramosdev/vulgocode`** (público). O GitHub Pages está configurado como **Source: GitHub Actions**: cada push na `main` dispara o workflow `.github/workflows/deploy.yml` (build + deploy).
 
-O endereço `alexandreramosdev.github.io/vulgocode/` existe, mas redireciona para `vulgocode.com.br` — comportamento esperado do GitHub Pages quando há domínio personalizado configurado. Enquanto o DNS não apontar, o site fica inacessível pelos dois endereços.
+O site está publicado em **https://vulgocode.com.br** (HTTP já ativo; certificado HTTPS do GitHub em emissão — ativar **Enforce HTTPS** em **Settings → Pages** quando disponível). O endereço `alexandreramosdev.github.io/vulgocode/` redireciona para o domínio personalizado — comportamento esperado do GitHub Pages.
 
 ### Domínio próprio (`vulgocode.com.br`)
 
-O arquivo `public/CNAME` declara o domínio final e ele já está registrado em **Settings → Pages → Custom domain**.
+Configurado e ativo (zona DNS gerenciada na Hostinger). Referência dos registros em uso:
 
-1. O domínio está hoje **estacionado** nos nameservers `atlas.dns-parking.com` / `hyperion.dns-parking.com` (Hostinger). Acesse o painel onde a zona DNS é gerenciada, **remova os registros de estacionamento** (A da raiz apontando para `2.57.91.91`) e crie:
-   - **A** (raiz `@`): `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-   - **AAAA** (raiz `@`): `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153`
-   - **CNAME** (`www`): `alexandreramosdev.github.io`
-2. Aguarde a propagação (minutos a algumas horas) e confirme em **Settings → Pages** que a verificação do domínio passou.
-3. Ative **Enforce HTTPS** (o certificado é emitido automaticamente após o DNS resolver).
+- **A** (`@`): `185.199.108.153` — o painel da Hostinger permite apenas um registro por nome; os demais IPs oficiais do GitHub Pages (`185.199.109.153`, `185.199.110.153`, `185.199.111.153`) são redundância opcional
+- **CNAME** (`www`): `alexandreramosdev.github.io`
+- **AAAA** (opcional): `2606:50c0:8000::153` a `2606:50c0:8003::153`
+
+Pendente: ativar **Enforce HTTPS** em **Settings → Pages** assim que o certificado for emitido (emissão automática, de minutos a ~24h após o DNS propagar).
 
 Nenhuma alteração de DNS ou de conta é feita por este repositório — os passos acima são manuais.
 
