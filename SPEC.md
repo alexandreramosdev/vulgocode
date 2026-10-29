@@ -90,4 +90,4 @@ Uma única landing page em `/`, com as seções: Header (navegação + menu mobi
 | Biografia | Preenchida com dados públicos do GitHub — revisar texto em `site.ts` |
 | Projetos reais | Resolvido — 5 projetos públicos verificados em `projects.ts`; ampliar conforme novos trabalhos |
 | Imagem Open Graph PNG | Pendente — gerar 1200×630 e referenciar em `BaseLayout` |
-| DNS e ativação do GitHub Pages | Manual, fora do repositório — documentado no README |
+| DNS do domínio | Pendente — repositório e Pages ativos com deploy automático funcionando; trocar a zona estacionada (`dns-parking.com`, IP `2.57.91.91`) pelos registros do GitHub Pages e ativar Enforce HTTPS |

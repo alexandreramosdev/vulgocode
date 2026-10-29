@@ -38,7 +38,7 @@ Status: `[ ]` pendente · `[~]` em andamento · `[x]` concluído
 - [x] P02 — Nome e bio preenchidos a partir do perfil público do GitHub — revisar e personalizar o texto em `src/config/site.ts`
 - [x] P03 — Cinco projetos reais dos repositórios públicos em `src/data/projects.ts`, com links de demo verificados (HTTP 200) e status fiel a cada repositório (`shelfcheck` ficou de fora: contém apenas README, sem código)
 - [ ] P04 — Imagem Open Graph 1200×630 PNG → referenciar em `src/layouts/BaseLayout.astro` (instrução em comentário)
-- [ ] P05 — Ativar GitHub Pages no repositório e configurar DNS do domínio (manual, passos no README)
+- [~] P05 — Repositório `alexandreramosdev/vulgocode` criado, Pages ativo e primeiro deploy concluído (workflow `success`; edge do Pages responde HTTP 200 para `vulgocode.com.br`). Falta: trocar a zona DNS estacionada (`dns-parking.com`, IP `2.57.91.91`) pelos registros do GitHub Pages (instruções no README) e ativar Enforce HTTPS
 - [ ] P06 — Páginas futuras `/projetos`, `/servicos`, `/sobre`, `/contato` (quando houver conteúdo suficiente)
 - [ ] P07 — Página `/privacidade` (somente se houver coleta de dados)
 - [ ] P08 — Testes manuais finais: leitor de tela, dispositivos físicos e Lighthouse após publicação
