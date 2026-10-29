@@ -48,19 +48,26 @@ Para adicionar uma página nova (ex.: `/servicos`), crie um arquivo em `src/page
 
 ## Publicação no GitHub Pages
 
-Repositório: **`alexandreramosdev/vulgocode`** (público). O GitHub Pages está configurado como **Source: GitHub Actions**: cada push na `main` dispara o workflow `.github/workflows/deploy.yml` (build + deploy).
+- **Repositório:** `alexandreramosdev/vulgocode` (público), branch `main`.
+- **Deploy:** automático via GitHub Actions (`.github/workflows/deploy.yml`) — cada push na `main` gera o build e publica no GitHub Pages (**Settings → Pages → Source: GitHub Actions**).
+- **Domínio:** `vulgocode.com.br` (registrado em **Settings → Pages → Custom domain** e mantido pelo arquivo `public/CNAME`). O endereço `alexandreramosdev.github.io/vulgocode/` redireciona para ele — comportamento esperado do GitHub Pages.
+- **HTTPS:** em ativação — o certificado é emitido automaticamente pelo GitHub após o DNS propagar; ativar **Enforce HTTPS** em **Settings → Pages** quando disponível.
 
-O site está publicado em **https://vulgocode.com.br** (HTTP já ativo; certificado HTTPS do GitHub em emissão — ativar **Enforce HTTPS** em **Settings → Pages** quando disponível). O endereço `alexandreramosdev.github.io/vulgocode/` redireciona para o domínio personalizado — comportamento esperado do GitHub Pages.
+### Como configurar o domínio próprio (passo a passo)
 
-### Domínio próprio (`vulgocode.com.br`)
+Referência completa para reconfigurar do zero (ex.: mudança de hospedagem ou de registrador):
 
-Configurado e ativo (zona DNS gerenciada na Hostinger). Referência dos registros em uso:
+1. **GitHub — Custom domain:** em **Settings → Pages**, mantenha **Source: GitHub Actions** e preencha **Custom domain** com `vulgocode.com.br`. O arquivo `public/CNAME` (já no repositório) mantém o domínio entre deploys.
+2. **DNS — registros apontando para o GitHub Pages** (zona gerenciada na Hostinger):
 
-- **A** (`@`): `185.199.108.153` — o painel da Hostinger permite apenas um registro por nome; os demais IPs oficiais do GitHub Pages (`185.199.109.153`, `185.199.110.153`, `185.199.111.153`) são redundância opcional
-- **CNAME** (`www`): `alexandreramosdev.github.io`
-- **AAAA** (opcional): `2606:50c0:8000::153` a `2606:50c0:8003::153`
+   | Tipo | Nome | Valor |
+   |---|---|---|
+   | A | `@` | `185.199.108.153` |
+   | CNAME | `www` | `alexandreramosdev.github.io` |
 
-Pendente: ativar **Enforce HTTPS** em **Settings → Pages** assim que o certificado for emitido (emissão automática, de minutos a ~24h após o DNS propagar).
+   Observações: o painel da Hostinger permite apenas **um** registro por nome — um único A já publica o site; `185.199.109.153`, `185.199.110.153` e `185.199.111.153` são redundância opcional, assim como os AAAA `2606:50c0:8000::153` a `2606:50c0:8003::153`.
+3. **Propagação:** aguarde de minutos a ~24h e confirme em **Settings → Pages** que a verificação do domínio passou (checagem rápida: `dig +short A vulgocode.com.br`).
+4. **HTTPS:** com o DNS ativo, o certificado é emitido automaticamente; ative **Enforce HTTPS** em **Settings → Pages**.
 
 Nenhuma alteração de DNS ou de conta é feita por este repositório — os passos acima são manuais.
 
