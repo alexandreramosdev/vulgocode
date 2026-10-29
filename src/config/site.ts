@@ -26,7 +26,7 @@ export const site: SiteConfig = {
   url: 'https://vulgocode.com.br',
   tagline: 'Desenvolvimento de software e soluções digitais.',
   contact: {
-    email: 'alexandresantos84@gmail.com',
+    email: 'contato@vulgocode.com.br',
     github: 'https://github.com/alexandreramosdev',
     linkedin: 'https://www.linkedin.com/in/alexandreramosdev',
   },

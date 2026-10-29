@@ -34,7 +34,7 @@ Status: `[ ]` pendente · `[~]` em andamento · `[x]` concluído
 
 ## Pendências do proprietário (não bloqueiam o desenvolvimento)
 
-- [x] P01 — Contato completo: e-mail, GitHub (`alexandreramosdev`) e LinkedIn (`in/alexandreramosdev`) configurados em `src/config/site.ts`
+- [x] P01 — Contato completo: `contato@vulgocode.com.br`, GitHub (`alexandreramosdev`) e LinkedIn (`in/alexandreramosdev`) configurados em `src/config/site.ts`
 - [x] P02 — Nome e bio preenchidos a partir do perfil público do GitHub — revisar e personalizar o texto em `src/config/site.ts`
 - [x] P03 — Cinco projetos reais dos repositórios públicos em `src/data/projects.ts`, com links de demo verificados (HTTP 200) e status fiel a cada repositório (`shelfcheck` ficou de fora: contém apenas README, sem código)
 - [ ] P04 — Imagem Open Graph 1200×630 PNG → referenciar em `src/layouts/BaseLayout.astro` (instrução em comentário)
@@ -42,3 +42,4 @@ Status: `[ ]` pendente · `[~]` em andamento · `[x]` concluído
 - [ ] P06 — Páginas futuras `/projetos`, `/servicos`, `/sobre`, `/contato` (quando houver conteúdo suficiente)
 - [ ] P07 — Página `/privacidade` (somente se houver coleta de dados)
 - [ ] P08 — Testes manuais finais: leitor de tela, dispositivos físicos e Lighthouse após publicação
+- [ ] P09 — E-mail profissional: concluir configuração do Zoho Mail no DNS — adicionar os registros **MX** do Zoho (`mx.zoho.com`, `mx2.zoho.com`, `mx3.zoho.com`) e o **SPF** (`v=spf1 include:zoho.com ~all`). O TXT de verificação já está na zona, mas sem MX o `contato@vulgocode.com.br` não recebe mensagens
