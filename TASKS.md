@@ -42,4 +42,4 @@ Status: `[ ]` pendente · `[~]` em andamento · `[x]` concluído
 - [ ] P06 — Páginas futuras `/projetos`, `/servicos`, `/sobre`, `/contato` (quando houver conteúdo suficiente)
 - [ ] P07 — Página `/privacidade` (somente se houver coleta de dados)
 - [ ] P08 — Testes manuais finais: leitor de tela, dispositivos físicos e Lighthouse após publicação
-- [ ] P09 — E-mail profissional: concluir configuração do Zoho Mail no DNS — adicionar os registros **MX** do Zoho (`mx.zoho.com`, `mx2.zoho.com`, `mx3.zoho.com`) e o **SPF** (`v=spf1 include:zoho.com ~all`). O TXT de verificação já está na zona, mas sem MX o `contato@vulgocode.com.br` não recebe mensagens
+- [x] P09 — Zoho Mail configurado no DNS: MX (`mx.zoho.com` 10, `mx2.zoho.com` 20, `mx3.zoho.com` 50) e SPF (`v=spf1 include:zoho.com ~all`) confirmados na zona. Recomendado: teste de recebimento real (enviar de outro e-mail para `contato@vulgocode.com.br`) e, opcionalmente, ativar DKIM no painel do Zoho
