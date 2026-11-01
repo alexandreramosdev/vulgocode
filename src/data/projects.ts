@@ -59,9 +59,10 @@ export const projects: Project[] = [
   {
     name: 'Conta Antes',
     description:
-      'Aplicativo web mobile-first para planejar compras de supermercado e acompanhar o total em tempo real, com histórico de preços salvos no próprio navegador.',
-    tech: ['Next.js', 'TypeScript', 'Tailwind CSS'],
-    status: 'em-desenvolvimento',
+      'Aplicativo web mobile-first para planejar compras de supermercado e acompanhar o total em tempo real, com histórico de preços salvos no próprio navegador. MVP finalizado e publicado.',
+    tech: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
+    status: 'publicado',
+    demoUrl: 'https://contas-antes.vercel.app/',
     repoUrl: 'https://github.com/alexandreramosdev/contas-antes',
   },
   {
